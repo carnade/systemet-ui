@@ -50,7 +50,7 @@ const path = require('path');
 process.env.NODE_ENV = 'production';
 
 module.exports = {
-  entry: './scripts/index',
+  entry: ['whatwg-fetch','./scripts/index'],
   output: {
     path: path.join(__dirname, 'static'),
     filename: 'bundle.js',

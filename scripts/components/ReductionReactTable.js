@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
+import 'whatwg-fetch';
+
 import 'react-table/react-table.css';
 import systemetLogo from '../resources/systembolaget.png';
 import vivinoLogo from '../resources/vivino.png';
+
 
 export default class ReductionReactTable extends Component {
   constructor() {
@@ -14,12 +17,12 @@ export default class ReductionReactTable extends Component {
   }
   componentWillMount() {
     fetch('http://192.168.1.101:3000/systemetpage?size=30000')
-      // fetch('http://localhost:3000/systemetpage?size=10&sort=reduction,desc&date')
+    //fetch('http://localhost:3000/systemetpage?size=10&sort=reduction,desc&date')
       // fetch('http://swapi.co/api/people/?format=json')
       .then(reponse => reponse.json())
       .then(({ content: items }) => this.setState({ items }))
-      .catch(() => {
-        console.error('error');
+      .catch(function(error) {
+        console.log('Request failed: ', error);
       });
   }
 

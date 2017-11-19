@@ -51,6 +51,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:5000',
     'webpack/hot/dev-server',
+    'whatwg-fetch',
     './scripts/index',
   ],
   output: {
@@ -62,6 +63,14 @@ module.exports = {
     extensions: ['', '.js'],
   },
   devtool: 'eval-source-map', // 'eval-source-map',
+  devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization, x-id, Content-Length, X-Requested-With",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS"
+    }
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
