@@ -16,8 +16,8 @@ export default class ReductionReactTable extends Component {
     };
   }
   componentWillMount() {
-    fetch('http://192.168.1.101:3000/systemetpage?size=30000')
-    //fetch('http://localhost:3000/systemetpage?size=10&sort=reduction,desc&date')
+    fetch('http://192.168.1.101:3000/systemet')
+    //fetch('http://localhost:3000/systemetpage?size=10000&sort=reduction,desc&date')
       // fetch('http://swapi.co/api/people/?format=json')
       .then(reponse => reponse.json())
       .then(({ content: items }) => this.setState({ items }))
@@ -56,7 +56,13 @@ export default class ReductionReactTable extends Component {
               Header: 'Prisföränding',
               columns: [
                 {
-                  Header: 'Pris',
+                  Header: 'Pris före',
+                  accessor: 'price',
+                  defaultSortDesc: 'true',
+                  Cell: row => <span>{(row.value)/ro}</span>,
+                },
+                {
+                  Header: 'Nytt pris',
                   accessor: 'price',
                   defaultSortDesc: 'true',
                 },
